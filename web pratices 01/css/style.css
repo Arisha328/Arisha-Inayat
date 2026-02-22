@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* NAVBAR */
+.navbar{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    color: white;
+    z-index: 1000;
+}
+
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navbar ul{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+/* HERO SECTION */
+.hero{
+    width: 100%;
+    height: 100vh;
+    background-image: url("../images/logo.png"); /* 👈 Apni image ka name likho */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+/* Dark overlay for better text visibility */
+.hero::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+}
+
+.hero-content{
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content h1{
+    font-size: 60px;
+    letter-spacing: 3px;
+}
+
+.hero-content p{
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.btn{
+    padding: 12px 30px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background: black;
+    color: white;
+}
+/* CATEGORY SECTION */
+
+.categories{
+    display: flex;
+    gap: 20px;
+    padding: 60px 40px;
+    background: #f4f4f4;
+    overflow-x: auto;   /* horizontal scroll */
+}
+
+.category{
+    position: relative;
+    min-width: 250px;
+    height: 400px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+/* Text overlay */
+.overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Dark effect */
+.category::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+}
+
+/* Hover effect */
+.category:hover img{
+    transform: scale(1.1);
+}
+
+

@@ -1,0 +1,570 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    color: white;
+}
+
+/* Logo */
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* Navbar Links */
+.navbar ul{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.navbar a:hover{
+    opacity: 0.7;
+}
+
+/* Right Side (Search + Icons) */
+.nav-icons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Search Bar (Same as Before) */
+.search-bar{
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* ================= ICON BUTTONS ================= */
+
+.icon-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn svg{
+    width: 22px;
+    height: 22px;
+}
+
+.icon-btn:hover{
+    opacity: 0.7;
+    transform: translateY(-2px);
+}
+
+/* ================= HERO SECTION ================= */
+
+.hero{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* Background Video */
+.bg-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Dark Overlay */
+.hero::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.hero-content{
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1{
+    font-size: 60px;
+    letter-spacing: 3px;
+}
+
+.hero-content p{
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+/* Button */
+.btn{
+    display: inline-block;
+    padding: 12px 30px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background: black;
+    color: white;
+}
+
+
+/* CATEGORY SECTION */
+
+.categories{
+    display: flex;
+    gap: 20px;
+    padding: 60px 40px;
+    background: #f4f4f4;
+    overflow-x: auto;   /* horizontal scroll */
+}
+
+.category{
+    position: relative;
+    min-width: 250px;
+    height: 400px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+/* Text overlay */
+.overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Dark effect */
+.category::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+}
+
+/* Hover effect */
+.category:hover img{
+    transform: scale(1.1);
+}
+/* ================= PRODUCT SECTION ================= */
+
+.product-section{
+    display: flex;
+    width: 100%;
+    background: #f5f5f5;
+}
+
+/* Left Big Image */
+.left-image{
+    width: 40%;
+}
+
+.left-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Right Side */
+.right-products{
+    width: 60%;
+    padding: 40px;
+}
+
+/* Slider */
+.product-slider{
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.product-slider::-webkit-scrollbar{
+    display: none;
+}
+
+/* Product Card */
+.product-card{
+    min-width: 220px;
+}
+
+.product-card img{
+    width: 100%;
+}
+
+.product-card h4{
+    font-size: 14px;
+    margin: 10px 0 5px;
+}
+
+.product-card p{
+    font-size: 12px;
+    color: gray;
+}
+
+.product-card span{
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Categories Section */
+.categories-focus{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.categories-focus h2{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.categories-focus ul{
+    list-style: none;
+}
+
+.categories-focus li{
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.shop-btn{
+    padding: 12px 25px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.shop-btn:hover{
+    background: #333;
+}
+/* ================= DENIM SECTION ================= */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.denim-section{
+    width: 100%;
+}
+
+/* Text Content */
+.denim-content{
+    max-width: 900px;
+}
+
+.denim-content h2{
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+.denim-content p{
+    font-size: 18px;
+    line-height: 1.7;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+/* View All Link */
+.view-all{
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    margin-bottom: 60px;
+    transition: 0.3s;
+}
+.view-all:hover{
+    letter-spacing: 2px;
+}
+
+/* 🔥 IMAGE FIX */
+.denim-image{
+    width: 100%;
+}
+
+.denim-image img{
+    width: 100%;
+    height: 600px;      /* control height */
+    object-fit: cover;  /* makes it full & clean */
+    display: block;
+}
+/* ================= FEATURED IMAGES ================= */
+
+.featured-images{
+    width: 100%;
+    padding: 60px 40px;
+    background: #f4f4f4;
+}
+
+.featured-container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* allows wrapping on small screens */
+    justify-content: space-between;
+}
+
+.featured-card{
+    flex: 1 1 calc(25% - 15px); /* 4 images inline with gap */
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.featured-card img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.featured-card:hover img{
+    transform: scale(1.05);
+}
+/* ================= CATEGORY STRIP ================= */
+
+.category-strip{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 40px;
+    background: #f4f4f4;
+    overflow-x: auto;   /* allows horizontal scroll if screen small */
+}
+
+.strip-item{
+    position: relative;
+    min-width: 220px;   /* each box width */
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.strip-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.strip-item:hover img{
+    transform: scale(1.05);
+}
+
+/* Text Overlay */
+.strip-text{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+/* ================= KIDS CATEGORY ================= */
+
+.kids-category{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px 40px;
+}
+
+.kids-item{
+    position: relative;
+    flex: 1;
+    height: 500px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.kids-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.kids-item:hover img{
+    transform: scale(1.05);
+}
+
+/* TEXT OVERLAY */
+
+.kids-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.kids-text span{
+    font-size: 18px;
+    font-weight: 500;
+}
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+    width: 100%;
+    background: #f2f2f2;
+    padding: 100px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.newsletter-left h1{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.newsletter-right{
+    width: 55%;
+}
+
+.newsletter-text{
+    font-size: 18px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.newsletter input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 12px 5px;
+    background: transparent;
+    outline: none;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.newsletter button{
+    background: black;
+    color: white;
+    padding: 15px 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.newsletter button:hover{
+    background: #333;
+}
+
+
+/* ================= FOOTER ================= */
+
+.footer{
+    background: black;
+    color: white;
+    padding: 80px 80px 40px 80px;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-logo h1{
+    font-size: 80px;
+    font-weight: bold;
+    color: #d9d9d9;
+}
+
+.footer-links{
+    display: flex;
+    gap: 80px;
+}
+
+.footer-links ul{
+    list-style: none;
+}
+
+.footer-links li{
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.footer-links li:hover{
+    color: #ccc;
+}
+
+.copyright{
+    text-align: center;
+    margin-top: 60px;
+    font-size: 14px;
+    color: #aaa;
+}
