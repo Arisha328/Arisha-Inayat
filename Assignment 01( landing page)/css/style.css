@@ -5,27 +5,26 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ================= NAVBAR ================= */
 
 .navbar{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 60px;
-    position: absolute;
+    position: sticky;
+    top: 0;
+background: black;
     width: 100%;
     z-index: 1000;
     color: white;
 }
 
-/* Logo */
 .logo{
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 2px;
 }
 
-/* Navbar Links */
 .navbar ul{
     list-style: none;
     display: flex;
@@ -42,15 +41,12 @@
 .navbar a:hover{
     opacity: 0.7;
 }
-
-/* Right Side (Search + Icons) */
 .nav-icons{
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-/* Search Bar (Same as Before) */
 .search-bar{
     padding: 6px 10px;
     border-radius: 4px;
@@ -58,8 +54,6 @@
     outline: none;
     font-size: 14px;
 }
-
-/* ================= ICON BUTTONS ================= */
 
 .icon-btn{
     background: none;
@@ -83,8 +77,6 @@
     transform: translateY(-2px);
 }
 
-/* ================= HERO SECTION ================= */
-
 .hero{
     position: relative;
     width: 100%;
@@ -97,7 +89,6 @@
     overflow: hidden;
 }
 
-/* Background Video */
 .bg-video{
     position: absolute;
     top: 0;
@@ -108,7 +99,6 @@
     z-index: -2;
 }
 
-/* Dark Overlay */
 .hero::after{
     content: "";
     position: absolute;
@@ -135,7 +125,6 @@
     font-size: 20px;
 }
 
-/* Button */
 .btn{
     display: inline-block;
     padding: 12px 30px;
@@ -151,15 +140,12 @@
     color: white;
 }
 
-
-/* CATEGORY SECTION */
-
 .categories{
     display: flex;
     gap: 20px;
     padding: 60px 40px;
     background: #f4f4f4;
-    overflow-x: auto;   /* horizontal scroll */
+    overflow-x: auto;   
 }
 
 .category{
@@ -177,7 +163,6 @@
     transition: 0.5s;
 }
 
-/* Text overlay */
 .overlay{
     position: absolute;
     top: 50%;
@@ -191,7 +176,6 @@
     z-index: 2;
 }
 
-/* Dark effect */
 .category::after{
     content: "";
     position: absolute;
@@ -199,11 +183,9 @@
     background: rgba(0,0,0,0.3);
 }
 
-/* Hover effect */
 .category:hover img{
     transform: scale(1.1);
 }
-/* ================= PRODUCT SECTION ================= */
 
 .product-section{
     display: flex;
@@ -211,7 +193,6 @@
     background: #f5f5f5;
 }
 
-/* Left Big Image */
 .left-image{
     width: 40%;
 }
@@ -222,13 +203,11 @@
     object-fit: cover;
 }
 
-/* Right Side */
 .right-products{
     width: 60%;
     padding: 40px;
 }
 
-/* Slider */
 .product-slider{
     display: flex;
     gap: 25px;
@@ -240,7 +219,6 @@
     display: none;
 }
 
-/* Product Card */
 .product-card{
     min-width: 220px;
 }
@@ -265,7 +243,6 @@
     margin-top: 5px;
 }
 
-/* Categories Section */
 .categories-focus{
     display: flex;
     justify-content: space-between;
@@ -300,7 +277,6 @@
 .shop-btn:hover{
     background: #333;
 }
-/* ================= DENIM SECTION ================= */
 
 *{
     margin: 0;
@@ -311,7 +287,6 @@
     width: 100%;
 }
 
-/* Text Content */
 .denim-content{
     max-width: 900px;
 }
@@ -328,7 +303,6 @@
     margin-bottom: 40px;
 }
 
-/* View All Link */
 .view-all{
     font-size: 18px;
     font-weight: bold;
@@ -342,18 +316,16 @@
     letter-spacing: 2px;
 }
 
-/* 🔥 IMAGE FIX */
 .denim-image{
     width: 100%;
 }
 
 .denim-image img{
     width: 100%;
-    height: 600px;      /* control height */
-    object-fit: cover;  /* makes it full & clean */
+    height: 600px;      
+    object-fit: cover;  
     display: block;
 }
-/* ================= FEATURED IMAGES ================= */
 
 .featured-images{
     width: 100%;
@@ -364,12 +336,12 @@
 .featured-container{
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* allows wrapping on small screens */
+    flex-wrap: wrap; 
     justify-content: space-between;
 }
 
 .featured-card{
-    flex: 1 1 calc(25% - 15px); /* 4 images inline with gap */
+    flex: 1 1 calc(25% - 15px);
     overflow: hidden;
     cursor: pointer;
 }
@@ -384,7 +356,6 @@
 .featured-card:hover img{
     transform: scale(1.05);
 }
-/* ================= CATEGORY STRIP ================= */
 
 .category-strip{
     width: 100%;
@@ -392,12 +363,12 @@
     gap: 20px;
     padding: 40px;
     background: #f4f4f4;
-    overflow-x: auto;   /* allows horizontal scroll if screen small */
+    overflow-x: auto;   
 }
 
 .strip-item{
     position: relative;
-    min-width: 220px;   /* each box width */
+    min-width: 220px;   
     height: 300px;
     overflow: hidden;
     cursor: pointer;
@@ -415,7 +386,6 @@
     transform: scale(1.05);
 }
 
-/* Text Overlay */
 .strip-text{
     position: absolute;
     bottom: 20px;
@@ -425,7 +395,6 @@
     font-size: 18px;
     letter-spacing: 1px;
 }
-/* ================= KIDS CATEGORY ================= */
 
 .kids-category{
     width: 100%;
@@ -453,8 +422,6 @@
     transform: scale(1.05);
 }
 
-/* TEXT OVERLAY */
-
 .kids-text{
     position: absolute;
     top: 50%;
@@ -471,7 +438,6 @@
     font-size: 18px;
     font-weight: 500;
 }
-/* ================= NEWSLETTER ================= */
 
 .newsletter{
     width: 100%;
@@ -521,9 +487,6 @@
 .newsletter button:hover{
     background: #333;
 }
-
-
-/* ================= FOOTER ================= */
 
 .footer{
     background: black;
