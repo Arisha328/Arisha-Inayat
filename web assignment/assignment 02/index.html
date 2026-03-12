@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Outfitters Clone</title>
+  
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    position: sticky;
+    top: 0;
+background: black;
+    width: 100%;
+    z-index: 1000;
+    color: white;
+}
+
+.logo{
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navbar ul{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.navbar a:hover{
+    opacity: 0.7;
+}
+.nav-icons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar{
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+.icon-btn{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn svg{
+    width: 22px;
+    height: 22px;
+}
+
+.icon-btn:hover{
+    opacity: 0.7;
+    transform: translateY(-2px);
+}
+
+.hero{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.bg-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.hero-content{
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1{
+    font-size: 60px;
+    letter-spacing: 3px;
+}
+
+.hero-content p{
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.btn{
+    display: inline-block;
+    padding: 12px 30px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background: black;
+    color: white;
+}
+
+.categories{
+    display: flex;
+    gap: 20px;
+    padding: 60px 40px;
+    background: #f4f4f4;
+    overflow-x: auto;   
+}
+
+.category{
+    position: relative;
+    min-width: 250px;
+    height: 400px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.category img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    z-index: 2;
+}
+
+.category::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+}
+
+.category:hover img{
+    transform: scale(1.1);
+}
+
+.product-section{
+    display: flex;
+    width: 100%;
+    background: #f5f5f5;
+}
+
+.left-image{
+    width: 40%;
+}
+
+.left-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.right-products{
+    width: 60%;
+    padding: 40px;
+}
+
+.product-slider{
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.product-slider::-webkit-scrollbar{
+    display: none;
+}
+
+.product-card{
+    min-width: 220px;
+}
+
+.product-card img{
+    width: 100%;
+}
+
+.product-card h4{
+    font-size: 14px;
+    margin: 10px 0 5px;
+}
+
+.product-card p{
+    font-size: 12px;
+    color: gray;
+}
+
+.product-card span{
+    font-weight: bold;
+    display: block;
+    margin-top: 5px;
+}
+
+.categories-focus{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.categories-focus h2{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.categories-focus ul{
+    list-style: none;
+}
+
+.categories-focus li{
+    font-size: 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.shop-btn{
+    padding: 12px 25px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.shop-btn:hover{
+    background: #333;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.denim-section{
+    width: 100%;
+}
+
+.denim-content{
+    max-width: 900px;
+}
+
+.denim-content h2{
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+.denim-content p{
+    font-size: 18px;
+    line-height: 1.7;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.view-all{
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    margin-bottom: 60px;
+    transition: 0.3s;
+}
+.view-all:hover{
+    letter-spacing: 2px;
+}
+
+.denim-image{
+    width: 100%;
+}
+
+.denim-image img{
+    width: 100%;
+    height: 600px;      
+    object-fit: cover;  
+    display: block;
+}
+
+.featured-images{
+    width: 100%;
+    padding: 60px 40px;
+    background: #f4f4f4;
+}
+
+.featured-container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+}
+
+.featured-card{
+    flex: 1 1 calc(25% - 15px);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.featured-card img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.featured-card:hover img{
+    transform: scale(1.05);
+}
+
+.category-strip{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 40px;
+    background: #f4f4f4;
+    overflow-x: auto;   
+}
+
+.strip-item{
+    position: relative;
+    min-width: 220px;   
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.strip-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.strip-item:hover img{
+    transform: scale(1.05);
+}
+
+.strip-text{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.kids-category{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px 40px;
+}
+
+.kids-item{
+    position: relative;
+    flex: 1;
+    height: 500px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.kids-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.kids-item:hover img{
+    transform: scale(1.05);
+}
+
+.kids-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.kids-text span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.newsletter{
+    width: 100%;
+    background: #f2f2f2;
+    padding: 100px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.newsletter-left h1{
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.newsletter-right{
+    width: 55%;
+}
+
+.newsletter-text{
+    font-size: 18px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.newsletter input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 12px 5px;
+    background: transparent;
+    outline: none;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.newsletter button{
+    background: black;
+    color: white;
+    padding: 15px 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.newsletter button:hover{
+    background: #333;
+}
+
+.footer{
+    background: black;
+    color: white;
+    padding: 80px 80px 40px 80px;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-logo h1{
+    font-size: 80px;
+    font-weight: bold;
+    color: #d9d9d9;
+}
+
+.footer-links{
+    display: flex;
+    gap: 80px;
+}
+
+.footer-links ul{
+    list-style: none;
+}
+
+.footer-links li{
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.footer-links li:hover{
+    color: #ccc;
+}
+
+.copyright{
+    text-align: center;
+    margin-top: 60px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* responsive navigation -------------------------------------------------- */
+.hamburger{
+    display: none;               /* hidden on desktop */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+.hamburger span{
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+/* when menu is active change hamburger appearance (optional) */
+.hamburger.active span:nth-child(1){
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2){
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3){
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+    .navbar{
+        padding: 15px 20px;
+    }
+    .nav-links{
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: black;
+        flex-direction: column;
+        width: 200px;
+        display: none;              /* hide by default */
+        padding: 20px 0;
+    }
+    .nav-links li{
+        margin: 0;
+    }
+    .nav-links a{
+        display: block;
+        padding: 12px 20px;        /* touch friendly spacing */
+    }
+    .nav-links.active{
+        display: flex;
+    }
+    .hamburger{
+        display: flex;              /* show hamburger on mobile */
+    }
+}
+
+    </style>
+    </head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="logo">OUTFITTERS</div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sale</a></li>
+            <li><a href="#">Men</a></li>
+            <li><a href="#">Women</a></li>
+            <li><a href="#">Juniors</a></li>
+        </ul>
+    </nav>
+
+    <div class="nav-icons">
+        <input type="text" placeholder="Search" class="search-bar">
+        <button class="icon-btn">
+            <!-- User SVG -->
+        </button>
+        <button class="icon-btn">
+            <!-- Cart SVG -->
+        </button>
+    </div>
+
+    <!-- Hamburger -->
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="../assignment01/videos/v1.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+        <h1>NEW COLLECTION 2026</h1>
+        <p>Discover Your Style With Confidence</p>
+        <a href="#" class="btn">Shop Now</a>
+    </div>
+
+</section>
+<!-- CATEGORY SECTION -->
+<section class="categories">
+
+    <div class="category">
+        <img src="../assignment01/images/tshirt.png"T-Shirts">
+        <div class="overlay">T-SHIRTS</div>
+    </div>
+
+    <div class="category">
+        <img src="../assignment01/images/polo.png" alt="Polos">
+        <div class="overlay">POLOS</div>
+    </div>
+
+    <div class="category">
+        <img src="../assignment01/images/shirt.png" alt="Shirts">
+        <div class="overlay">SHIRTS</div>
+    </div>
+
+    <div class="category">
+        <img src="../assignment01/images/active.png" alt="Active Wear">
+        <div class="overlay">ACTIVE WEAR</div>
+    </div>
+
+    <div class="category">
+        <img src="../assignment01/images/denim.png" alt="Denim">
+        <div class="overlay">DENIM</div>
+    </div>
+
+    <div class="category">
+        <img src="../assignment01/images/trousers.png" alt="Trousers">
+        <div class="overlay">TROUSERS</div>
+    </div>
+
+    <div class="category">
+        <img src="../assignment01/images/shorts.png" alt="Shorts">
+        <div class="overlay">SHORTS</div>
+    </div>
+
+    <div class="category">
+        <img src="../assignment01/images/sweatshirt & hoodies.png" alt="Sweatshirt & Hoodies">
+        <div class="overlay">SWEATSHIRT  & HOODIES</div>
+    </div>
+
+    <div class="category">
+        <img src="../assignment01/images/sweaters.png" alt="Sweaters">
+        <div class="overlay">SWEATERS</div>
+    </div>
+   
+     <div class="category">
+        <img src="../assignment01/images/outerwear.png" alt="Outerwear">
+        <div class="overlay">OUTERWEAR</div>
+    </div>
+</section>
+
+<!-- PRODUCT SECTION -->
+<section class="product-section">
+    <!-- Left Large Image -->
+    <div class="left-image">
+        <img src="../assignment01/images/left-model.png" alt="">
+    </div>
+    <!-- Right Slider Section -->
+    <div class="right-products">
+
+        <div class="product-slider">
+
+            <div class="product-card">
+                <img src="../assignment01/images/p1.png" alt="">
+                <h4>EMBROIDERED SLOGAN PRINT</h4>
+                <p>REGULAR FIT | MEN</p>
+                <span>PKR 4,490</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p2.png" alt="">
+                <h4>CROPPED GRAPHIC T-SHIRT</h4>
+                <p>BOXY FIT | MEN</p>
+                <span>PKR 3,290</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p3.png" alt="">
+                <h4>CROPPED SLOGAN POLO</h4>
+                <p>BOXY FIT | MEN</p>
+                <span>PKR 4,490</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p4.png" alt="">
+                <h4>GRAPHIC T-SHIRT</h4>
+                <p>RELAXED FIT | MEN</p>
+                <span>PKR 3,290</span>
+            </div>
+
+             <div class="product-card">
+                <img src="../assignment01/images/p5.png" alt="">
+                <h4>Textured Crew-Neck T-Shirt</h4>
+                <p>Regular Fit | MEN</p>
+                <span>PKR 4,990</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p6.png" alt="Sweater Knitted Polo">
+                <h4>Sweater Knitted Polo</h4>
+                <p>Regular Fit | Men</p>
+                <span>PKR 5,990</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p7.png" alt="Graphic T-Shirt">
+                 <h4>Graphic T-Shirt</h4>
+                 <p>Relaxed Fit | Men</p>
+                <span>PKR 3,290</span>
+            </div>
+            <div class="product-card">
+                <img src="../assignment01/images/p8.png" alt="Graphic T-Shirt">
+                <h4>Graphic T-Shirt</h4>
+                <p>Relaxed Fit | Men</p>
+                <span>PKR 2,890</span>
+            </div>
+           
+            <div class="product-card">
+                <img src="../assignment01/images/p9.png" alt="">
+                <h4>GRAPHIC T-SHIRT</h4>
+                <p>RELAXED FIT | MEN</p>
+                <span>PKR 2,890</span>
+            </div>
+
+        </div>
+        <!-- Categories Section -->
+        <div class="categories-focus">
+            <div class="focus-left">
+                <h2>CATEGORIES IN FOCUS</h2>
+                <ul>
+                    <li><strong>T-Shirts & Polos</strong></li>
+                    <li>Denim</li>
+                    <li>Trousers</li>
+                </ul>
+            </div>
+
+            <div class="focus-right">
+                <button class="shop-btn">SHOP ALL</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DENIM SECTION -->
+<section class="denim-section">
+
+    <div class="denim-content">
+        <h2>Denim</h2>
+
+        <p>
+            WHEN WE THINK ABOUT DENIM, WE THINK ABOUT CRAFT — THE FABRIC,
+            THE SILHOUETTE, THE WASH. IT’S A FASHION STAPLE, A CLASSIC PIECE
+            THAT GROWS BETTER WITH WEAR, BECOMING MORE PERSONAL OVER TIME.
+            WE KNOW WHAT MAKES DENIM, DENIM — SO WE CRAFT IT WITH CARE RIGHT
+            HERE IN PAKISTAN. EACH WASH AND EVERY CUT CARRIES A STORY OF
+            TEXTURE, MOVEMENT, AND EASE — BUILT FOR COMFORT, CONFIDENCE,
+            AND EFFORTLESS STYLE.
+        </p>
+
+        <a href="#" class="view-all">
+          <b> VIEW ALL →</b> 
+        </a>
+    </div>
+
+    <!-- Denim Image -->
+    <div class="denim-image">
+        <img src="../assignment01/images/denim-banner.png" alt="Denim Collection">
+    </div>
+
+</section>
+<!-- FEATURED IMAGES SECTION -->
+<section class="featured-images">
+    <div class="featured-container">
+        <div class="featured-card">
+            <img src="../assignment01/images/p10.png" alt="Feature 1">
+        </div>
+        <div class="featured-card">
+            <img src="../assignment01/images/p11.png" alt="Feature 2">
+        </div>
+        <div class="featured-card">
+            <img src="../assignment01/images/p12.png" alt="Feature 3">
+        </div>
+        <div class="featured-card">
+            <img src="../assignment01/images/p13.png" alt="Feature 4">
+        </div>
+    </div>
+</section>
+<!-- CATEGORY STRIP SECTION -->
+<section class="category-strip">
+
+    <div class="strip-item">
+        <img src="../assignment01/images/p14.png" alt="">
+        <div class="strip-text">T-SHIRTS</div>
+    </div>
+
+    <div class="strip-item">
+        <img src="../assignment01/images/p15.png" alt="">
+        <div class="strip-text">SHIRTS</div>
+    </div>
+
+    <div class="strip-item">
+        <img src="../assignment01/images/p16.png" alt="">
+        <div class="strip-text">DRESSES</div>
+    </div>
+
+    <div class="strip-item">
+        <img src="../assignment01/images/p17.png" alt="">
+        <div class="strip-text">SKIRTS & SHORTS</div>
+    </div>
+
+    <div class="strip-item">
+        <img src="../assignment01/images/p18.png" alt="">
+        <div class="strip-text">DENIM</div>
+    </div>
+
+    <div class="strip-item">
+        <img src="../assignment01/images/p19.png" alt="">
+        <div class="strip-text">TROUSERS</div>
+    </div>
+    
+    <div class="strip-item">
+        <img src="../assignment01/images/p20.png" alt="">
+        <div class="strip-text">SWEATSHIRTS & HOODIES</div>
+    </div>
+
+    <div class="strip-item">
+        <img src="../assignment01/images/p21.png" alt="">
+        <div class="strip-text">SWEATERS</div>
+    </div>
+
+    <div class="strip-item">
+        <img src="../assignment01/images/p22.png" alt="">
+        <div class="strip-text">OUTERWEAR</div>
+    </div>
+</section>
+
+<!-- PRODUCT SECTION -->
+<section class="product-section">
+
+    <!-- Left Large Image -->
+    <div class="left-image">
+        <img src="../assignment01/images/left-women-model.png" alt="">
+    </div>
+
+    <!-- Right Slider Section -->
+    <div class="right-products">
+
+        <div class="product-slider">
+
+            <div class="product-card">
+                <img src="../assignment01/images/p23.png" alt="">
+                <h4>CROPPED T-SHIRT</h4>
+                <p>RELAXED FIT | WOMEN</p>
+                <span>PKR 2,890</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p24.png" alt="">
+                <h4>GRAPHIC T-SHIRT</h4>
+                <p>RELAXED FIT | WOMEN</p>
+                <span>PKR 2,890</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p25.png" alt="">
+                <h4>CROPPED STRIPED TANK TOP</h4>
+                <p>SLIM FIT | WOMEN</p>
+                <span>PKR 2,290</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p26.png" alt="">
+                <h4>CROPPED STRIPED T-SHIRT</h4>
+                <p>REGULAR FIT | WOMEN</p>
+                <span>PKR 2,890</span>
+            </div>
+
+             <div class="product-card">
+                <img src="../assignment01/images/p27.png" alt="">
+                <h4>EMBROIDERED T-Shirt</h4>
+                <p>RELAXED Fit | WOMEN</p>
+                <span>PKR 3,290</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p28.png" alt="Sweater Knitted Polo">
+                <h4>SUPER CROPPED SLOGAN T-SHIRT</h4>
+                <p>SLIM FIT| WOMEN</p>
+                <span>PKR 1,890</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p29.png" alt="Graphic T-Shirt">
+                 <h4>CROPPED STRIPED T-SHIRT</h4>
+                 <p>RELAXED Fit | WOMEN</p>
+                <span>PKR 2,890</span>
+            </div>
+            <div class="product-card">
+                <img src="../assignment01/images/p30.png" alt="Graphic T-Shirt">
+                <h4>SLIM FIT STRIPED T-SHIRT</h4>
+                <p>SLIM FIT | WOMEN</p>
+                <span>PKR 2,490</span>
+            </div>
+           
+
+        </div>
+
+        <!-- Categories Section -->
+        <div class="categories-focus">
+            <div class="focus-left">
+                <h2>CATEGORIES IN FOCUS</h2>
+                <ul>
+                    <li><strong>T-Shirts & Polos</strong></li>
+                    <li>Denim</li>
+                    <li>Trousers</li>
+                </ul>
+            </div>
+
+            <div class="focus-right">
+                <button class="shop-btn">SHOP ALL</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DENIM SECTION -->
+<section class="denim-section">
+
+    <div class="denim-content">
+        <h2>Denim</h2>
+
+        <p>
+            WHEN WE THINK ABOUT DENIM, WE THINK ABOUT CRAFT - THE FABRIC,
+            THE SILHOUETTE, THE WASH. IT'S A FASHION STAPLE, A CLASSIC PIECE 
+            THAT GROWS BETTER WITH WEAR, BECOMING MORE PERSONAL OVER TIME.
+            WE KNOW WHAT MAKES DENIM, DENIM - SO WE CRAFT IT WITH CARE RIGHT
+            HERE IN PAKISTAN. EACH WASH AND EVERY CUT CARRIES A STORY OF
+            TEXTURE, MOVEMENT, AND EASE -BUILT FOR COMFORT, CONFIDENCE,
+            AND EFFORTLESS STYLE.
+        </p>
+
+        <a href="#" class="view-all">
+          <b> VIEW ALL →</b> 
+        </a>
+    </div>
+
+    <!-- Denim Image -->
+    <div class="denim-image">
+        <img src="../assignment01/images/denim-women-banner.png" alt="Denim Collection">
+    </div>
+</section>
+<!-- FEATURED IMAGES SECTION -->
+<section class="featured-images">
+    <div class="featured-container">
+        <div class="featured-card">
+            <img src="../assignment01/images/p31.png" alt="Feature 1">
+        </div>
+        <div class="featured-card">
+            <img src="../assignment01/images/p32.png" alt="Feature 2">
+        </div>
+        <div class="featured-card">
+            <img src="../assignment01/images/p33.png" alt="Feature 3">
+        </div>
+        <div class="featured-card">
+            <img src="../assignment01/images/p34.png" alt="Feature 4">
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCT SECTION -->
+<section class="product-section">
+
+    <!-- Left Large Image -->
+    <div class="left-image">
+        <img src="../assignment01/images/left-kid-model.png" alt="">
+    </div>
+
+    <!-- Right Slider Section -->
+    <div class="right-products">
+
+        <div class="product-slider">
+
+            <div class="product-card">
+                <img src="../assignment01/images/p35.png" alt="">
+                <h4>CHARACTER GRAPHIC T-SHIRT</h4>
+                <p>REGULAR FIT | GIRLS TODDLER</p>
+                <span>PKR 1,690</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p36.png" alt="">
+                <h4>CROPPED GRAPHIC T-SHIRT</h4>
+                <p>RELAXED FIT | GIRLS JUNIOR</p>
+                <span>PKR 1,890</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p37.png" alt="">
+                <h4>STRIPED T-SHIRT WITH APPLIQUE DETAIL</h4>
+                <p>RELAXED FIT | GIRLS JUNIOR</p>
+                <span>PKR 2,290</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p38.png" alt="">
+                <h4>CROPPED BLOUSEWITH BOW DETAIL</h4>
+                <p>RELAXED FIT | GIRLS JUNIOR</p>
+                <span>PKR 2,290</span>
+            </div>
+
+             <div class="product-card">
+                <img src="../assignment01/images/p39.png" alt="">
+                <h4>EMBELLISHED T-Shirt</h4>
+                <p>RELAXED Fit | GIRLS TODDLER</p>
+                <span>PKR 2,290</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p40.png" alt="Sweater Knitted Polo">
+                <h4>EMBLLISHED T-SHIRT</h4>
+                <p>REGULAR FIT| GIRLS JUNIORS</p>
+                <span>PKR 1,890</span>
+            </div>
+
+            <div class="product-card">
+                <img src="../assignment01/images/p41.png" alt="Graphic T-Shirt">
+                 <h4>CROPPED GRAPHIC T-SHIRT</h4>
+                 <p>RELAXED Fit | GIRLS TODDLER</p>
+                <span>PKR 2,090</span>
+            </div>
+            <div class="product-card">
+                <img src="../assignment01/images/p42.png" alt="Graphic T-Shirt">
+                <h4>CROPPED GRAPHIC T-SHIRT</h4>
+                <p>RELAXED FIT | GIRLS JUNIOR</p>
+                <span>PKR 2,290</span>
+            </div>
+           
+
+        </div>
+
+        <!-- Categories Section -->
+        <div class="categories-focus">
+            <div class="focus-left">
+                <h2>GIRLS CATEGORIES IN FOCUS</h2>
+                <ul>
+                    <li><strong>T-Shirts & Polos</strong></li>
+                    <li>Denim</li>
+                    <li>Trousers</li>
+                </ul>
+            </div>
+
+            <div class="focus-right">
+                <button class="shop-btn">SHOP ALL</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DENIM SECTION -->
+<section class="denim-section">
+
+    <div class="denim-content">
+        <h2>Denim</h2>
+
+        <p>
+            WHEN WE THINK ABOUT DENIM, WE THINK ABOUT CRAFT - THE FABRIC,
+            THE SILHOUETTE, THE WASH. IT'S A FASHION STAPLE, A CLASSIC PIECE 
+            THAT GROWS BETTER WITH WEAR, BECOMING MORE PERSONAL OVER TIME.
+            WE KNOW WHAT MAKES DENIM, DENIM - SO WE CRAFT IT WITH CARE RIGHT
+            HERE IN PAKISTAN. EACH WASH AND EVERY CUT CARRIES A STORY OF
+            TEXTURE, MOVEMENT, AND EASE -BUILT FOR COMFORT, CONFIDENCE,
+            AND EFFORTLESS STYLE.
+        </p>
+
+        <a href="#" class="view-all">
+          <b> VIEW ALL →</b> 
+        </a>
+    </div>
+
+    <!-- Denim Image -->
+    <div class="denim-image">
+        <img src="../assignment01/images/denim-KIDS-banner.png" alt="Denim Collection">
+    </div>
+</section>
+
+<!-- KIDS CATEGORY SECTION -->
+<section class="kids-category">
+
+    <div class="kids-item">
+        <img src="../assignment01/images/k1.png" alt="">
+        <div class="kids-text">
+            TODDLER GIRLS <br>
+            <span>6M - 6Y</span>
+        </div>
+    </div>
+
+    <div class="kids-item">
+        <img src="../assignment01/images/k2.png" alt="">
+        <div class="kids-text">
+            GIRLS <br>
+            <span>6Y-14Y</span>
+        </div>
+    </div>
+
+    <div class="kids-item">
+        <img src="../assignment01/images/k3.png" alt="">
+        <div class="kids-text">
+            TODDLER BOYS <br>
+            <span>6M - 6Y</span>
+        </div>
+    </div>
+
+    <div class="kids-item">
+        <img src="../assignment01/images/k4.png" alt="">
+        <div class="kids-text">
+            BOYS <br>
+            <span>6Y-14Y</span>
+        </div>
+    </div>
+</section>
+
+<!-- NEWSLETTER SECTION  -->
+<section class="newsletter">
+
+    <div class="newsletter-left">
+        <h1>BE THE FIRST <br> TO KNOW</h1>
+    </div>
+
+    <div class="newsletter-right">
+        <p class="newsletter-text">
+            GET AN UPDATE OF ALL OUR LATEST COLLECTIONS, DISCOUNTS & FEATURES COMING UP
+        </p>
+
+        <input type="email" placeholder="ENTER YOUR EMAIL">
+
+        <button>SIGN ME UP!</button>
+    </div>
+
+</section>
+
+
+<!--FOOTER SECTION -->
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            <h1>Outfitters</h1>
+        </div>
+
+        <div class="footer-links">
+            <ul>
+                <li>Shopping Guide</li>
+                <li>Log In/Sign Up</li>
+                <li>Exchange & Returns</li>
+                <li>Shipping & Deliveries</li>
+                <li>How To Buy</li>
+                <li>Payment</li>
+            </ul>
+
+            <ul>
+                <li>About Us</li>
+                <li>Retail Stores</li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        @ Copyrights Reserved by Outfitters 2026
+    </div>
+
+</footer>
+<script>
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const links = document.querySelectorAll('.nav-links li a');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active'); // animate bars
+});
+
+// Close menu when a link is clicked (use delegation or loop)
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+    });
+});
+</script>
+</body>
+</html>
