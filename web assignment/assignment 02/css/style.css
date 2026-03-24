@@ -61,7 +61,7 @@ background: black;
     cursor: pointer;
     color: white;
     padding: 5px;
-    transition: opacity 0.3s ease, transform 0.2s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,7 +160,7 @@ background: black;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: 0.5s;
+    transition: 0.6s ease-in-out;
 }
 
 .overlay{
@@ -277,12 +277,6 @@ background: black;
 .shop-btn:hover{
     background: #333;
 }
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 .denim-section{
     width: 100%;
 }
@@ -350,7 +344,7 @@ background: black;
     width: 100%;
     height: 300px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform 0.6s ease-in-out;
 }
 
 .featured-card:hover img{
@@ -379,7 +373,7 @@ background: black;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s ease-in-out;
 }
 
 .strip-item:hover img{
@@ -415,7 +409,7 @@ background: black;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s ease-in-out;
 }
 
 .kids-item:hover img{
@@ -531,56 +525,58 @@ background: black;
     font-size: 14px;
     color: #aaa;
 }
-/* Hamburger styles */
-.hamburger {
-    display: none;
+
+/* responsive navigation -------------------------------------------------- */
+.hamburger{
+    display: none;               /* hidden on desktop */
     flex-direction: column;
-    justify-content: space-between;
-    width: 28px;
-    height: 22px;
+    gap: 5px;
     cursor: pointer;
 }
-
-.hamburger span {
+.hamburger span{
     display: block;
+    width: 25px;
     height: 3px;
     background: white;
     border-radius: 2px;
     transition: 0.3s;
 }
+/* when menu is active change hamburger appearance (optional) */
+.hamburger.active span:nth-child(1){
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2){
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3){
+    transform: rotate(-45deg) translate(5px, -5px);
+}
 
-/* Mobile Menu */
 @media (max-width: 768px) {
-    .navbar {
+    .navbar{
         padding: 15px 20px;
     }
-
-    .nav-links {
+    .nav-links{
         position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
+        top: 60px;
+        right: 0;
         background: black;
         flex-direction: column;
-        align-items: center;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
+        width: 200px;
+        display: none;              /* hide by default */
+        padding: 20px 0;
     }
-
-    .nav-links li {
-        margin: 15px 0;
+    .nav-links li{
+        margin: 0;
     }
-
-    .nav-links.show {
-        max-height: 500px; /* enough to show all links */
+    .nav-links a{
+        display: block;
+        padding: 12px 20px;        /* touch friendly spacing */
     }
-
-    .nav-icons {
-        display: none; /* hide search/cart on mobile if desired */
-    }
-
-    .hamburger {
+    .nav-links.active{
         display: flex;
+    }
+    .hamburger{
+        display: flex;              /* show hamburger on mobile */
     }
 }
