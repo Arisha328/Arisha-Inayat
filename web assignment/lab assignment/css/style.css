@@ -5,6 +5,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -12,7 +13,7 @@
     padding: 20px 60px;
     position: sticky;
     top: 0;
-    background: black;
+background: black;
     width: 100%;
     z-index: 1000;
     color: white;
@@ -40,7 +41,6 @@
 .navbar a:hover{
     opacity: 0.7;
 }
-
 .nav-icons{
     display: flex;
     align-items: center;
@@ -277,7 +277,6 @@
 .shop-btn:hover{
     background: #333;
 }
-
 .denim-section{
     width: 100%;
 }
@@ -307,7 +306,6 @@
     margin-bottom: 60px;
     transition: 0.3s;
 }
-
 .view-all:hover{
     letter-spacing: 2px;
 }
@@ -418,60 +416,117 @@
     transform: scale(1.05);
 }
 
+.kids-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.kids-text span{
+    font-size: 18px;
+    font-weight: 500;
+}
+
 .newsletter{
+    width: 100%;
+    background: #f2f2f2;
+    padding: 100px 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 60px 40px;
-    background: #f4f4f4;
 }
 
 .newsletter-left h1{
-    font-size: 36px;
+    font-size: 48px;
+    font-weight: bold;
 }
 
 .newsletter-right{
-    max-width: 500px;
+    width: 55%;
 }
 
-.newsletter-right p{
-    margin-bottom: 20px;
+.newsletter-text{
+    font-size: 18px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
 }
 
-.newsletter-right input{
-    width: 70%;
-    padding: 10px;
-    margin-right: 10px;
+.newsletter input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 12px 5px;
+    background: transparent;
+    outline: none;
+    margin-bottom: 40px;
+    font-size: 16px;
 }
 
-.newsletter-right button{
-    padding: 10px 20px;
-    cursor: pointer;
+.newsletter button{
     background: black;
     color: white;
+    padding: 15px 50px;
     border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+.newsletter button:hover{
+    background: #333;
 }
 
 .footer{
     background: black;
     color: white;
-    padding: 40px;
+    padding: 80px 80px 40px 80px;
 }
 
 .footer-container{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-logo h1{
+    font-size: 80px;
+    font-weight: bold;
+    color: #d9d9d9;
+}
+
+.footer-links{
+    display: flex;
+    gap: 80px;
 }
 
 .footer-links ul{
     list-style: none;
 }
 
-.footer-links ul li{
-    margin-bottom: 10px;
+.footer-links li{
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Hamburger styles */
+.footer-links li:hover{
+    color: #ccc;
+}
+
+.copyright{
+    text-align: center;
+    margin-top: 60px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* responsive navigation -------------------------------------------------- */
 .hamburger{
     display: none;               /* hidden on desktop */
     flex-direction: column;
@@ -501,45 +556,27 @@
     .navbar{
         padding: 15px 20px;
     }
-
     .nav-links{
         position: absolute;
         top: 60px;
         right: 0;
         background: black;
         flex-direction: column;
-        width: 220px;
-
-      
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-
-        padding: 0;
+        width: 200px;
+        display: none;              /* hide by default */
+        padding: 20px 0;
     }
-
     .nav-links li{
         margin: 0;
     }
-
     .nav-links a{
         display: block;
-        padding: 15px 20px;
-        border-bottom: 1px solid #333;
+        padding: 12px 20px;        /* touch friendly spacing */
     }
-
-    /* ACTIVE STATE */
     .nav-links.active{
-        max-height: 300px;
-        padding: 10px 0;
-    }
-
-    .hamburger{
         display: flex;
     }
-
-   
-    .nav-icons{
-        display: none;
+    .hamburger{
+        display: flex;              /* show hamburger on mobile */
     }
 }
