@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Outfitters Clone</title>
     <link rel="stylesheet" href="./css/style.css">
-    </head>
+    <script src="/js/script.js"></script>
+</head>
 <body>
 
 <!-- NAVBAR -->
@@ -41,7 +42,7 @@
 <!-- HERO SECTION -->
 <section class="hero">
 
-    <video autoplay muted loop playsinline class="bg-video">
+    <videos autoplay muted loop playsinline class="bg-video">
         <source src="../assignment01/videos/v1.mp4" type="video/mp4">
     </video>
 
@@ -635,23 +636,6 @@
     </div>
 
 </footer>
-<script>
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-const links = document.querySelectorAll('.nav-links li a');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active'); // animate bars
-});
-
-// Close menu when a link is clicked (use delegation or loop)
-links.forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('active');
-    });
-});
-</script>
 </body>
 </html>
