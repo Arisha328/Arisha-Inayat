@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-<<<<<<< HEAD
 
 // Configure view engine
 app.set('view engine', 'ejs');
@@ -12,22 +11,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Set proper MIME types for static files
-app.use((req, res, next) => {
-    if (req.path.endsWith('.css')) {
-        res.setHeader('Content-Type', 'text/css');
-    } else if (req.path.endsWith('.js')) {
-        res.setHeader('Content-Type', 'application/javascript');
-    } else if (req.path.endsWith('.png')) {
-        res.setHeader('Content-Type', 'image/png');
-    } else if (req.path.endsWith('.mp4')) {
-        res.setHeader('Content-Type', 'video/mp4');
-    }
-    next();
-});
-
-// Static files - MUST be before routes
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static assets
+app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
+app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use('/videos', express.static(path.join(__dirname, 'public', 'videos')));
 
 // Routes
 app.get('/', (req, res) => {
@@ -45,23 +33,6 @@ app.post('/contact-us', (req, res) => {
 
 // Start server
 const PORT = 3000;
-=======
-const PORT = 3000;
-
-// Set EJS as template engine
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// Serve static files (CSS, JS, images)
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Home route
-app.get('/', (req, res) => {
-    res.render('index'); // yaha index.ejs render hoga
-});
-
-// Start server
->>>>>>> dbd393ddd98c040dc5432d1b857ee58a2deacf8a
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
