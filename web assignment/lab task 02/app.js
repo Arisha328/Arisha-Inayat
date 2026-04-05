@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+<<<<<<< HEAD
 
 // Configure view engine
 app.set('view engine', 'ejs');
@@ -44,6 +45,23 @@ app.post('/contact-us', (req, res) => {
 
 // Start server
 const PORT = 3000;
+=======
+const PORT = 3000;
+
+// Set EJS as template engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Serve static files (CSS, JS, images)
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Home route
+app.get('/', (req, res) => {
+    res.render('index'); // yaha index.ejs render hoga
+});
+
+// Start server
+>>>>>>> dbd393ddd98c040dc5432d1b857ee58a2deacf8a
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
