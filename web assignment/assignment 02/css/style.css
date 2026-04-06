@@ -71,7 +71,6 @@ background: black;
     width: 22px;
     height: 22px;
 }
-
 .icon-btn:hover{
     opacity: 0.7;
     transform: translateY(-2px);
