@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfitters Clone</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+
+    <div class="logo">OUTFITTERS</div>
+
+    <nav>
+        <ul class="nav-links">
+
+            <li><a href="/">Home</a></li>
+
+            <li><a href="/products">Products</a></li>
+
+            <li><a href="#">Sale</a></li>
+
+            <li><a href="#">Men</a></li>
+
+            <li><a href="#">Women</a></li>
+
+            <li><a href="#">Juniors</a></li>
+
+            <li><a href="/contact-us">Contact Us</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="nav-icons">
+
+        <input type="text" placeholder="Search" class="search-bar">
+
+        <button class="icon-btn"></button>
+
+        <button class="icon-btn"></button>
+
+    </div>
+
+    <div class="hamburger">
+
+        <span></span>
+
+        <span></span>
+
+        <span></span>
+
+    </div>
+
+</header>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <video autoplay muted loop playsinline class="bg-video">
+
+        <source src="/videos/v1.mp4" type="video/mp4">
+
+    </video>
+
+    <div class="hero-content">
+
+        <h1>NEW COLLECTION 2026</h1>
+
+        <p>Discover Your Style With Confidence</p>
+
+        <a href="/products" class="btn">
+            Shop Now
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+    <div class="category">
+        <img src="/images/tshirt.png" alt="">
+        <div class="overlay">T-SHIRTS</div>
+    </div>
+
+    <div class="category">
+        <img src="/images/polo.png" alt="">
+        <div class="overlay">POLOS</div>
+    </div>
+
+    <div class="category">
+        <img src="/images/shirt.png" alt="">
+        <div class="overlay">SHIRTS</div>
+    </div>
+
+    <div class="category">
+        <img src="/images/active.png" alt="">
+        <div class="overlay">ACTIVE WEAR</div>
+    </div>
+
+    <div class="category">
+        <img src="/images/denim.png" alt="">
+        <div class="overlay">DENIM</div>
+    </div>
+
+    <div class="category">
+        <img src="/images/trousers.png" alt="">
+        <div class="overlay">TROUSERS</div>
+    </div>
+
+</section>
+
+
+<!-- FEATURED PRODUCTS -->
+
+<section class="product-section">
+
+    <div class="left-image">
+
+        <img src="/images/left-model.png" alt="">
+
+    </div>
+
+    <div class="right-products">
+
+        <div class="categories-focus">
+
+            <div class="focus-left">
+
+                <h2>CATEGORIES IN FOCUS</h2>
+
+                <ul>
+
+                    <li><strong>T-Shirts & Polos</strong></li>
+
+                    <li>Denim</li>
+
+                    <li>Trousers</li>
+
+                </ul>
+
+            </div>
+
+            <div class="focus-right">
+
+                <a href="/products">
+
+                    <button class="shop-btn">
+                        SHOP ALL PRODUCTS
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DENIM SECTION -->
+
+<section class="denim-section">
+
+    <div class="denim-content">
+
+        <h2>Denim</h2>
+
+        <p>
+            WHEN WE THINK ABOUT DENIM, WE THINK ABOUT CRAFT —
+            THE FABRIC, THE SILHOUETTE, THE WASH.
+            IT’S A FASHION STAPLE.
+        </p>
+
+        <a href="/products" class="view-all">
+            <b>VIEW ALL PRODUCTS →</b>
+        </a>
+
+    </div>
+
+    <div class="denim-image">
+
+        <img src="/images/denim-banner.png" alt="">
+
+    </div>
+
+</section>
+
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+    <div class="newsletter-left">
+
+        <h1>
+            BE THE FIRST <br>
+            TO KNOW
+        </h1>
+
+    </div>
+
+    <div class="newsletter-right">
+
+        <p class="newsletter-text">
+
+            GET ALL OUR LATEST COLLECTIONS,
+            DISCOUNTS & FEATURES
+
+        </p>
+
+        <input type="email" placeholder="ENTER YOUR EMAIL">
+
+        <button>
+            SIGN ME UP!
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-logo">
+
+            <h1>Outfitters</h1>
+
+        </div>
+
+        <div class="footer-links">
+
+            <ul>
+
+                <li>Shopping Guide</li>
+
+                <li>Log In/Sign Up</li>
+
+                <li>Exchange & Returns</li>
+
+                <li>Shipping & Deliveries</li>
+
+                <li>How To Buy</li>
+
+                <li>Payment</li>
+
+            </ul>
+
+            <ul>
+
+                <li>About Us</li>
+
+                <li>Retail Stores</li>
+
+                <li>
+                    <a href="/contact-us" style="color:white;">
+                        Contact Us
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+
+        @ Copyrights Reserved by Outfitters 2026
+
+    </div>
+
+</footer>
+
+
+<script>
+
+const hamburger = document.querySelector('.hamburger');
+
+const navLinks = document.querySelector('.nav-links');
+
+const links = document.querySelectorAll('.nav-links li a');
+
+
+hamburger.addEventListener('click', () => {
+
+    navLinks.classList.toggle('active');
+
+    hamburger.classList.toggle('active');
+
+});
+
+
+links.forEach(link => {
+
+    link.addEventListener('click', () => {
+
+        navLinks.classList.remove('active');
+
+        hamburger.classList.remove('active');
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
