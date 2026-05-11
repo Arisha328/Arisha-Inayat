@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Outfitters Clone</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../assignment01/css/style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <style>
+            :root{--brand:#0d6efd;--muted:#6c757d}
+            body{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.4;color:#222}
+            
+            /* Luxury Header */
+            .navbar{border-bottom:1px solid #f0f0f0;padding:16px 0}
+            .navbar-brand{font-weight:700;font-size:16px;letter-spacing:.5px;color:#000 !important}
+            .navbar-nav .nav-link{font-size:13px;letter-spacing:.4px;color:#000;margin:0 16px;font-weight:500}
+            .navbar-nav .nav-link:hover{color:#666}
+            .search-input-group{max-width:280px;width:100%}
+            .search-input-group .form-control{border-radius:24px;border:1px solid #e8e8e8;font-size:12px;padding:8px 16px;background:#f9f9f9}
+            .search-input-group .form-control:focus{background:#fff;border-color:#d0d0d0;outline:none;box-shadow:none}
+            .icon-btn{background:none;border:none;cursor:pointer;color:#000;padding:6px;margin:0 8px;position:relative;font-size:16px;display:flex;align-items:center}
+            .icon-btn:hover{color:#666}
+            .badge-dot{position:absolute;top:-2px;right:-2px;width:8px;height:8px;background:#d32f2f;border-radius:50%;border:2px solid #fff}
+            
+            .bg-video{width:100%;height:60vh;object-fit:cover;display:block}
+            .hero-content{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;text-align:center}
+            .hero-overlay{position:relative}
+            .hero-title{font-weight:700;letter-spacing:2px}
+
+            /* Global image reset: responsive and preserve aspect ratio */
+            img{max-width:100%;height:auto;display:block}
+
+            /* Ratio containers: show full image without cropping */
+            .ratio > img{width:100%;height:100%;object-fit:contain;object-position:center;border-radius:8px}
+
+            /* Card product images: constrain height but keep aspect */
+            .card-img-top{width:100%;height:220px;object-fit:contain;object-position:center;background-color:#fff}
+
+            /* Other image groups: ensure contained images */
+            .category img, .featured-card img, .strip-item img, .kids-item img, .featured-images img, .category-strip img{width:100%;height:auto;object-fit:contain;border-radius:8px}
+
+            .product-card img{width:100%;height:auto}
+            .product-card h4{font-size:1rem;margin-top:.5rem}
+        .footer{background:#f6f7f8;padding:48px 0;margin-top:3rem;color:#222}
+                .footer .fw-bold{letter-spacing:1px}
+                .footer h6{font-weight:600}
+                .footer a{color:inherit;text-decoration:none}
+                .footer .muted{color:#6c757d}
+
+                /* Newsletter section */
+            .newsletter{text-align:center}
+            .newsletter h2{margin-bottom:24px}
+            .newsletter form{justify-content:center;max-width:500px;margin:0 auto}
+            .newsletter .form-control{border:1px solid #ddd;border-radius:4px;max-width:280px;height:38px}
+            .newsletter .btn{padding:6px 10px;font-size:11px;font-weight:500;letter-spacing:.3px;white-space:nowrap;height:38px;line-height:1.2;display:flex;align-items:center}
+            @media(min-width:992px){.bg-video{height:80vh}}
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+</head>
+<body>
+
+<header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="#">OUTFITTERS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Collections</a></li>
+                </ul>
+                
+                <div class="d-flex align-items-center gap-2">
+                    <!-- Search bar -->
+                    <div class="search-input-group">
+                        <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+                    </div>
+                    
+                    <!-- Account icon -->
+                    <button class="icon-btn" title="Account">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </button>
+                    
+                    <!-- Shopping bag with badge -->
+                    <button class="icon-btn" title="Shopping Bag">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                            <path d="M3 6h18"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                        <span class="badge-dot"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="hero position-relative hero-overlay">
+        <video autoplay muted loop playsinline class="bg-video">
+            <source src="../assignment01/videos/v1.mp4" type="video/mp4">
+        </video>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="display-5 hero-title">NEW COLLECTION 2026</h1>
+                <p class="lead">Discover Your Style With Confidence</p>
+                <a href="#" class="btn btn-primary btn-lg">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories py-5">
+        <div class="container">
+            <div class="row g-3">
+                <!-- keep original content, wrapped in responsive cols -->
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="ratio ratio-4x3">
+                        <img src="../assignment01/images/tshirt.png" alt="T-Shirts" class="rounded">
+                    </div>
+                    <div class="mt-2 text-center fw-semibold">T-SHIRTS</div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="ratio ratio-4x3"><img src="../assignment01/images/polo.png" alt="Polos" class="rounded"></div>
+                    <div class="mt-2 text-center fw-semibold">POLOS</div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="ratio ratio-4x3"><img src="../assignment01/images/shirt.png" alt="Shirts" class="rounded"></div>
+                    <div class="mt-2 text-center fw-semibold">SHIRTS</div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="ratio ratio-4x3"><img src="../assignment01/images/active.png" alt="Active Wear" class="rounded"></div>
+                    <div class="mt-2 text-center fw-semibold">ACTIVE WEAR</div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="ratio ratio-4x3"><img src="../assignment01/images/denim.png" alt="Denim" class="rounded"></div>
+                    <div class="mt-2 text-center fw-semibold">DENIM</div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="ratio ratio-4x3"><img src="../assignment01/images/trousers.png" alt="Trousers" class="rounded"></div>
+                    <div class="mt-2 text-center fw-semibold">TROUSERS</div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="ratio ratio-4x3"><img src="../assignment01/images/shorts.png" alt="Shorts" class="rounded"></div>
+                    <div class="mt-2 text-center fw-semibold">SHORTS</div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="ratio ratio-4x3"><img src="../assignment01/images/sweaters.png" alt="Sweaters" class="rounded"></div>
+                    <div class="mt-2 text-center fw-semibold">SWEATERS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-section py-5">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-5">
+                    <img src="../assignment01/images/left-model.png" alt="Men Model" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div class="row row-cols-1 row-cols-sm-2 g-3">
+                        <div class="col">
+                            <div class="card h-100 p-3">
+                                <img src="../assignment01/images/p1.png" class="card-img-top" alt="Product">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title">EMBROIDERED SLOGAN PRINT</h5>
+                                    <p class="text-muted small">REGULAR FIT | MEN</p>
+                                    <div class="fw-semibold">PKR 4,490</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 p-3">
+                                <img src="../assignment01/images/p2.png" class="card-img-top" alt="Product">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title">CROPPED GRAPHIC T-SHIRT</h5>
+                                    <p class="text-muted small">BOXY FIT | MEN</p>
+                                    <div class="fw-semibold">PKR 3,290</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 p-3">
+                                <img src="../assignment01/images/p3.png" class="card-img-top" alt="Product">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title">CROPPED SLOGAN POLO</h5>
+                                    <p class="text-muted small">BOXY FIT | MEN</p>
+                                    <div class="fw-semibold">PKR 4,490</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 p-3">
+                                <img src="../assignment01/images/p4.png" class="card-img-top" alt="Product">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title">GRAPHIC T-SHIRT</h5>
+                                    <p class="text-muted small">RELAXED FIT | MEN</p>
+                                    <div class="fw-semibold">PKR 3,290</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div>
+                            <h3 class="h6 mb-1">CATEGORIES IN FOCUS</h3>
+                            <ul class="list-unstyled mb-0 small">
+                                <li><strong>T-Shirts & Polos</strong></li>
+                                <li>Denim</li>
+                                <li>Trousers</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <a class="btn btn-outline-primary" href="#">SHOP ALL</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="denim-section py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <h2>Denim</h2>
+                    <p class="text-muted">WHEN WE THINK ABOUT DENIM, WE THINK ABOUT CRAFT — THE FABRIC, THE SILHOUETTE, THE WASH...</p>
+                    <a href="#" class="btn btn-link"><strong>VIEW ALL →</strong></a>
+                </div>
+                <div class="col-12 col-md-6">
+                    <img src="../assignment01/images/denim-banner.png" alt="Denim Collection" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-images py-4">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-6 col-md-3"><img src="../assignment01/images/p10.png" alt="Feature" class="rounded"></div>
+                <div class="col-6 col-md-3"><img src="../assignment01/images/p11.png" alt="Feature" class="rounded"></div>
+                <div class="col-6 col-md-3"><img src="../assignment01/images/p12.png" alt="Feature" class="rounded"></div>
+                <div class="col-6 col-md-3"><img src="../assignment01/images/p13.png" alt="Feature" class="rounded"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-strip py-4">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-6 col-md-3 text-center">
+                    <img src="../assignment01/images/p14.png" alt="T-shirts" class="rounded mb-2">
+                    <div class="fw-semibold">T-SHIRTS</div>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="../assignment01/images/p15.png" alt="Shirts" class="rounded mb-2">
+                    <div class="fw-semibold">SHIRTS</div>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="../assignment01/images/p16.png" alt="Dresses" class="rounded mb-2">
+                    <div class="fw-semibold">DRESSES</div>
+                </div>
+                <div class="col-6 col-md-3 text-center">
+                    <img src="../assignment01/images/p18.png" alt="Denim" class="rounded mb-2">
+                    <div class="fw-semibold">DENIM</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-5"><img src="../assignment01/images/left-women-model.png" alt="Women Model" class="img-fluid rounded shadow-sm"></div>
+                <div class="col-12 col-lg-7">
+                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                        <div class="col">
+                            <div class="card p-3 h-100"><img src="../assignment01/images/p23.png" class="card-img-top" alt="Product"><div class="card-body p-2"><h5 class="card-title">CROPPED T-SHIRT</h5><p class="text-muted small">RELAXED FIT | WOMEN</p><div class="fw-semibold">PKR 2,890</div></div></div>
+                        </div>
+                        <div class="col">
+                            <div class="card p-3 h-100"><img src="../assignment01/images/p24.png" class="card-img-top" alt="Product"><div class="card-body p-2"><h5 class="card-title">GRAPHIC T-SHIRT</h5><p class="text-muted small">RELAXED FIT | WOMEN</p><div class="fw-semibold">PKR 2,890</div></div></div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div>
+                            <h3 class="h6 mb-1">CATEGORIES IN FOCUS</h3>
+                            <ul class="list-unstyled mb-0 small"><li><strong>T-Shirts & Polos</strong></li><li>Denim</li><li>Trousers</li></ul>
+                        </div>
+                        <a class="btn btn-outline-primary" href="#">SHOP ALL</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="denim-section py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <h2>Denim</h2>
+                    <p class="text-muted">EACH WASH AND EVERY CUT CARRIES A STORY OF TEXTURE, MOVEMENT, AND EASE...</p>
+                    <a href="#" class="btn btn-link"><strong>VIEW ALL →</strong></a>
+                </div>
+                <div class="col-12 col-md-6"><img src="../assignment01/images/denim-women-banner.png" class="img-fluid rounded shadow-sm" alt="Denim Collection"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-5"><img src="../assignment01/images/left-kid-model.png" alt="Kid Model" class="img-fluid rounded shadow-sm"></div>
+                <div class="col-12 col-lg-7">
+                    <div class="card p-3 h-100"><img src="../assignment01/images/p35.png" class="card-img-top" alt="Product"><div class="card-body p-2"><h5 class="card-title">CHARACTER GRAPHIC T-SHIRT</h5><p class="text-muted small">REGULAR FIT | GIRLS TODDLER</p><div class="fw-semibold">PKR 1,690</div></div></div>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div>
+                            <h3 class="h6 mb-1">GIRLS CATEGORIES IN FOCUS</h3>
+                            <ul class="list-unstyled mb-0 small"><li><strong>T-Shirts & Polos</strong></li><li>Denim</li><li>Trousers</li></ul>
+                        </div>
+                        <a class="btn btn-outline-primary" href="#">SHOP ALL</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="kids-category py-4">
+        <div class="container">
+            <div class="row g-3">
+                <div class="col-6 col-md-3 text-center"><img src="../assignment01/images/k1.png" alt="Toddler Girls" class="rounded mb-2"><div class="fw-semibold">TODDLER GIRLS <br><small>6M - 6Y</small></div></div>
+                <div class="col-6 col-md-3 text-center"><img src="../assignment01/images/k2.png" alt="Girls" class="rounded mb-2"><div class="fw-semibold">GIRLS <br><small>6Y-14Y</small></div></div>
+                <div class="col-6 col-md-3 text-center"><img src="../assignment01/images/k3.png" alt="Toddler Boys" class="rounded mb-2"><div class="fw-semibold">TODDLER BOYS <br><small>6M - 6Y</small></div></div>
+                <div class="col-6 col-md-3 text-center"><img src="../assignment01/images/k4.png" alt="Boys" class="rounded mb-2"><div class="fw-semibold">BOYS <br><small>6Y-14Y</small></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter py-5">
+        <div class="container">
+            <h2 class="fw-bold mb-4">BE THE FIRST TO KNOW</h2>
+            <p class="small text-muted mb-3">GET AN UPDATE OF ALL OUR LATEST COLLECTIONS, DISCOUNTS & FEATURES COMING UP</p>
+            <form class="d-flex gap-3">
+                <input type="email" class="form-control" placeholder="ENTER YOUR EMAIL" aria-label="Email">
+                <button class="btn btn-primary" type="submit">SIGN ME UP!</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-12 col-lg-6">
+                <div class="d-flex align-items-start gap-3">
+                    <div class="logo-mark">
+                        <h4 class="fw-bold mb-1">Outfitters</h4>
+                        <div class="muted small">Quality apparel and curated collections.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-6">
+                        <h6>Customer</h6>
+                        <ul class="list-unstyled small">
+                            <li><a href="#">Shopping Guide</a></li>
+                            <li><a href="#">Log In / Sign Up</a></li>
+                            <li><a href="#">Exchange & Returns</a></li>
+                            <li><a href="#">Shipping & Deliveries</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <h6>Company</h6>
+                        <ul class="list-unstyled small">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Retail Stores</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12 text-center small text-muted">@ Copyrights Reserved by Outfitters 2026</div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

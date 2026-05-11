@@ -1,0 +1,106 @@
+/* 1. Universal selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Body styling */
+body {
+  font-family: Arial;
+  background-color: #f4f4f4;
+}
+
+/* 3. Header (Flexbox) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: black;
+  color: white;
+  padding: 15px;
+}
+
+/* 4. Links */
+nav a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: yellow;
+}
+
+/* 5. Hero Section */
+.hero {
+  height: 200px;
+  background: lightblue;
+  text-align: center;
+  padding: 50px;
+}
+
+/* 6. Button (Transition + Hover) */
+button {
+  padding: 10px 20px;
+  border: none;
+  background: blue;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: darkblue;
+  transform: scale(1.1);
+}
+
+/* 7. Cards (Flexbox + Gap) */
+.cards {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+}
+
+/* 8. Card design (Box Model) */
+.card {
+  background: white;
+  padding: 20px;
+  border: 2px solid black;
+  flex: 1;
+  text-align: center;
+  box-shadow: 2px 2px 5px gray;
+}
+
+/* 9. Special card (Class selector) */
+.special {
+  background: yellow;
+}
+
+/* 10. Position example */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* 11. Responsive Design */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+  }
+}
+
+/* 12. Animation */
+@keyframes move {
+  from { transform: translateX(0); }
+  to { transform: translateX(50px); }
+}
+
+.hero h2 {
+  animation: move 2s infinite alternate;
+}

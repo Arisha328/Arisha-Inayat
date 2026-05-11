@@ -1,0 +1,14 @@
+{
+  "name": "05-express-mongoose-restful-api",
+  "version": "1.0.0",
+  "description": "A basic Express and Mongoose RESTful API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.3.2"
+  }
+}
