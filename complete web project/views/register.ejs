@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Outfitters</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .register-wrapper {
+            max-width: 420px;
+            margin: 80px auto;
+            padding: 32px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+        }
+        .register-wrapper h2 {
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+        .register-wrapper label {
+            display: block;
+            margin: 16px 0 8px;
+            font-weight: 600;
+        }
+        .register-wrapper input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d7d7d7;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .register-wrapper .button {
+            margin-top: 24px;
+            width: 100%;
+            padding: 14px;
+        }
+        .register-error {
+            margin-bottom: 16px;
+            color: #c0392b;
+            background: #fdecea;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+        }
+        .register-success {
+            margin-bottom: 16px;
+            color: #27ae60;
+            background: #d5f4e6;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #a8e6cf;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .login-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<%- include('partials/header') %>
+
+<div class="register-wrapper">
+    <h2>Create Account</h2>
+
+    <% if (error && error.length > 0) { %>
+        <div class="register-error">
+            <% error.forEach(msg => { %>
+                <%= msg %><br>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <% if (success && success.length > 0) { %>
+        <div class="register-success">
+            <% success.forEach(msg => { %>
+                <%= msg %><br>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <form action="/register" method="POST">
+        <label for="name">Full Name</label>
+        <input id="name" type="text" name="name" required placeholder="Enter your full name" autocomplete="name">
+
+        <label for="email">Email Address</label>
+        <input id="email" type="email" name="email" required placeholder="Enter your email" autocomplete="email">
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required placeholder="Create a password (min 6 characters)" autocomplete="new-password">
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" name="confirmPassword" required placeholder="Confirm your password" autocomplete="new-password">
+
+        <button type="submit" class="button primary">Create Account</button>
+    </form>
+
+    <div class="login-link">
+        Already have an account? <a href="/login">Sign in here</a>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>
