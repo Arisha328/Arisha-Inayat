@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product | Admin | Outfitters</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        .image-preview {
+            margin-top: 10px;
+            max-width: 200px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .button {
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .button-secondary {
+            background-color: #6c757d;
+            margin-left: 10px;
+        }
+        .button-secondary:hover {
+            background-color: #545b62;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<%- include('../partials/header') %>
+
+<div class="admin-page">
+    <%- include('../partials/admin-sidebar', { active: 'add' }) %>
+    <main class="admin-content">
+        <div class="admin-top">
+            <h2>➕ Add New Product</h2>
+        </div>
+
+        <!-- ✅ Success/Error Messages -->
+        <% if (success && success.length > 0) { %>
+            <div class="alert alert-success">
+                <strong>✓ Success:</strong> <%= success %> 
+            </div>
+        <% } %>
+        <% if (error && error.length > 0) { %>
+            <div class="alert alert-error">
+                <strong>✗ Error:</strong> <%= error %>
+            </div>
+        <% } %>
+
+        <form class="admin-form" action="/admin/add-product" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+            
+            <!-- Product Name -->
+            <div class="form-group">
+                <label for="name">Product Name <span style="color: red;">*</span></label>
+                <input 
+                    type="text" 
+                    id="name"
+                    name="name" 
+                    placeholder="e.g., T-Shirt Classic Blue" 
+                    required
+                    minlength="3"
+                    maxlength="100"
+                >
+            </div>
+
+            <!-- Price and Stock Row -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="price">Price (PKR) <span style="color: red;">*</span></label>
+                    <input 
+                        type="number" 
+                        id="price"
+                        name="price" 
+                        placeholder="e.g., 1500" 
+                        required 
+                        min="0"
+                        step="100"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="stock">Stock Quantity <span style="color: red;">*</span></label>
+                    <input 
+                        type="number" 
+                        id="stock"
+                        name="stock" 
+                        placeholder="e.g., 50" 
+                        required 
+                        min="0"
+                    >
+                </div>
+            </div>
+
+            <!-- Category and Fit Row -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="category">Category <span style="color: red;">*</span></label>
+                    <select id="category" name="category" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="Men">👨 Men</option>
+                        <option value="Women">👩 Women</option>
+                        <option value="Juniors">👦 Juniors</option>
+                        <option value="Kids">👧 Kids</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fit">Fit Type</label>
+                    <select id="fit" name="fit">
+                        <option value="Regular Fit">Regular Fit</option>
+                        <option value="Slim Fit">Slim Fit</option>
+                        <option value="Oversized">Oversized</option>
+                        <option value="Athletic Fit">Athletic Fit</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sub Category and Rating Row -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="subCategory">Sub Category</label>
+                    <input 
+                        type="text" 
+                        id="subCategory"
+                        name="subCategory" 
+                        placeholder="e.g., Formal, Casual, Sports"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="rating">Initial Rating (1-5)</label>
+                    <input 
+                        type="number" 
+                        id="rating"
+                        name="rating" 
+                        min="1"
+                        max="5"
+                        value="3"
+                    >
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label for="description">Product Description</label>
+                <textarea 
+                    id="description"
+                    name="description" 
+                    placeholder="Describe the product details, materials, care instructions..."
+                ></textarea>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="form-group">
+                <label for="image">Product Image <span style="color: red;">*</span></label>
+                <input 
+                    type="file" 
+                    id="image"
+                    name="image" 
+                    accept="image/jpeg,image/jpg,image/png,image/gif"
+                    required
+                    onchange="previewImage()"
+                >
+                <small style="color: #666; display: block; margin-top: 5px;">📁 Supported: JPG, PNG, GIF (Max 5MB)</small>
+                <div id="preview" class="image-preview"></div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button-group">
+                <button type="submit" class="button">✓ Save Product</button>
+                <a href="/admin" class="button button-secondary">← Cancel</a>
+            </div>
+        </form>
+    </main>
+</div>
+
+<%- include('../partials/footer') %>
+
+<script>
+    function previewImage() {
+        const file = document.getElementById('image').files[0];
+        const preview = document.getElementById('preview');
+        
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.innerHTML = `<img src="${e.target.result}" alt="Preview" style="width: 100%; border-radius: 4px;">`;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function validateForm() {
+        const name = document.getElementById('name').value.trim();
+        const price = document.getElementById('price').value;
+        const stock = document.getElementById('stock').value;
+        const category = document.getElementById('category').value;
+        const image = document.getElementById('image').files[0];
+
+        if (!name) {
+            alert('⚠️ Product name is required!');
+            return false;
+        }
+        if (!price || price < 0) {
+            alert('⚠️ Valid price is required!');
+            return false;
+        }
+        if (!stock || stock < 0) {
+            alert('⚠️ Valid stock quantity is required!');
+            return false;
+        }
+        if (!category) {
+            alert('⚠️ Category is required!');
+            return false;
+        }
+        if (!image) {
+            alert('⚠️ Product image is required!');
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>
