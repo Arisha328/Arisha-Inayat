@@ -44,7 +44,7 @@ router.use(isAdmin);
 // 🛠️ Dashboard: Read All Products
 router.get('/', async (req, res) => {
     try {
-        const products = await Product.find().sort({ createdAt: -1 });
+        const products = await Product.find().sort({ createdAt: -1 }) || [];
         res.render('admin/dashboard', { products });
     } catch (error) {
         console.error('Dashboard error:', error);

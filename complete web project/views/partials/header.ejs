@@ -53,8 +53,8 @@
     </div>
 </header>
 <script>
-    window.OUTFITTERS_USER = <%- JSON.stringify({
-        id: user && user.id ? user.id : '',
-        email: user && user.email ? user.email : ''
-    }) %>;
+    window.OUTFITTERS_USER = {
+        id: "<%= user && user.id ? user.id : '' %>",
+        email: "<%= user && user.email ? user.email : '' %>"
+    };
 </script>
