@@ -217,20 +217,31 @@
                         </tr>
                     <% } else { %>
                         <% products.forEach(p => { %>
+<<<<<<< HEAD
                             <% let stockStyle = 'color: red;'; if (p.stock > 20) { stockStyle = 'color: green;'; } else if (p.stock > 0) { stockStyle = 'color: orange;'; } %>
+=======
+>>>>>>> 68abda7251c7db28e7759766c67943d61c93aae0
                             <tr>
                                 <td><img src="<%= p.image %>" alt="<%= p.name %>" class="admin-thumb" onerror="this.src='/images/placeholder.png'"></td>
                                 <td><strong><%= p.name %></strong></td>
                                 <td><span style="background-color: #f0f0f0; padding: 4px 8px; border-radius: 4px;"><%= p.category %></span></td>
                                 <td><strong>PKR <%= p.price %></strong></td>
                                 <td>
+<<<<<<< HEAD
                                     <span style"<%= stockStyle %>">
+=======
+                                    <span style="<%= p.stock > 20 ? 'color: green;' : p.stock > 0 ? 'color: orange;' : 'color: red;' %>">
+>>>>>>> 68abda7251c7db28e7759766c67943d61c93aae0
                                         <%= p.stock %>
                                     </span>
                                 </td>
                                 <td>
                                     <a href="/admin/edit-product/<%= p._id %>" class="action-link edit">Edit</a>
+<<<<<<< HEAD
                                     <a href="#" class="action-link delete" data-id="<%= p._id %>" data-name="<%= p.name.replace(/"/g, '&quot;') %>" onclick="showDeleteModal(this.dataset.id, this.dataset.name);">Delete</a>
+=======
+                                    <a href="#" class="action-link delete" onclick="showDeleteModal('<%= p._id %>', '<%= p.name %>');">Delete</a>
+>>>>>>> 68abda7251c7db28e7759766c67943d61c93aae0
                                 </td>
                             </tr>
                         <% }) %>
