@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Outfitters</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .login-wrapper {
+            max-width: 420px;
+            margin: 80px auto;
+            padding: 32px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+        }
+        .login-wrapper h2 {
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+        .login-wrapper label {
+            display: block;
+            margin: 16px 0 8px;
+            font-weight: 600;
+        }
+        .login-wrapper input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d7d7d7;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .login-wrapper .button {
+            margin-top: 24px;
+            width: 100%;
+            padding: 14px;
+        }
+        .login-error {
+            margin-bottom: 16px;
+            color: #c0392b;
+            background: #fdecea;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+        }
+        .login-success {
+            margin-bottom: 16px;
+            color: #27ae60;
+            background: #d5f4e6;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #a8e6cf;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .register-link a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<%- include('partials/header') %>
+
+<div class="login-wrapper">
+    <h2>Sign In</h2>
+
+    <% if (error && error.length > 0) { %>
+        <div class="login-error">
+            <% error.forEach(msg => { %>
+                <%= msg %><br>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <% if (success && success.length > 0) { %>
+        <div class="login-success">
+            <% success.forEach(msg => { %>
+                <%= msg %><br>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <form action="/login" method="POST">
+        <label for="email">Email Address</label>
+        <input id="email" type="email" name="email" required placeholder="Enter your email" autocomplete="email">
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required placeholder="Enter your password" autocomplete="current-password">
+
+        <button type="submit" class="button primary">Sign In</button>
+    </form>
+
+    <div class="register-link">
+        Don't have an account? <a href="/register">Create one here</a>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>
